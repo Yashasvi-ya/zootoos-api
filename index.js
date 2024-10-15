@@ -2,7 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/auth.routes');
+const authRoutes = require('./routes/auth.routes.js');
+const userRoutes = require('./routes/user.routes.js')
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
