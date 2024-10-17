@@ -36,7 +36,7 @@ exports.addProduct = async (req, res, next) => {
     }
 }
 
-exports.getProducts = async (req, res) => {
+exports.getProducts = async (req, res, next) => {
     try {
         const startIndex = parseInt(req.query.startIndex) || 0
         const limit = parseInt(req.query.limit) || 9 
@@ -60,6 +60,6 @@ exports.getProducts = async (req, res) => {
         }
         res.status(200).json({products,totalProducts});
     } catch (error) {
-        next(error)
+        next(errorHandler(500, "server error"))
     }
 }
