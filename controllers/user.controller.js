@@ -45,13 +45,14 @@ exports.addToCart = async (req, res) => {
 
     if (existingItemIndex > -1) {
       cart.cartItems[existingItemIndex].qty += parseInt(qty);
+      cart.cartItems[existingItemIndex].price += price;
     } else {
       cart.cartItems.push({
         product: productId,
         qty,
         size,
         name,
-        price
+        price : price * parseInt(qty)
       });
     }
 
